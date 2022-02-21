@@ -1,0 +1,37 @@
+type Banco {
+	id: ID!
+	nombre: String
+	clave: String!
+	fechaRegistro: String
+}
+type Query {
+	bancos(registros: Int): [Banco]
+	banco(id: ID): Banco
+}
+type Mutation {
+	registrarBanco(
+		nombre: String!
+		clave: String!
+		fechaRegistro: String
+	): Banco
+}
+
+type Cliente {
+	id: ID!
+	nombre: String
+	correo: String!
+	apellidoPaterno: String
+	apellidoMaterno: String
+}
+type Query {
+	clientes(registros: Int): [Cliente]
+	cliente(id: ID): Cliente
+}
+type Mutation {
+	registrarCliente(
+		nombre: String!
+		correo: String!
+		apellidoPaterno: String
+		apellidoMaterno: String
+	): Cliente
+}
