@@ -4,17 +4,6 @@ type Banco {
 	clave: String!
 	fechaRegistro: String
 }
-type Query {
-	bancos(registros: Int): [Banco]
-	banco(id: ID): Banco
-}
-type Mutation {
-	registrarBanco(
-		nombre: String!
-		clave: String!
-		fechaRegistro: String
-	): Banco
-}
 
 type Cliente {
 	id: ID!
@@ -23,11 +12,21 @@ type Cliente {
 	apellidoPaterno: String
 	apellidoMaterno: String
 }
+
 type Query {
+	bancos(registros: Int): [Banco]
+	banco(id: ID): Banco
 	clientes(registros: Int): [Cliente]
 	cliente(id: ID): Cliente
 }
+
 type Mutation {
+	registrarBanco(
+		nombre: String!	
+		clave: String!
+		fechaRegistro: String
+	): Banco
+	
 	registrarCliente(
 		nombre: String!
 		correo: String!
