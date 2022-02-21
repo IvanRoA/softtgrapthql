@@ -19,8 +19,8 @@ public class BancoService {
 		this.bancoRepository = bancoRepository;
 	}
 	
-	public Banco registrarBanco(final String nombre, final String clave, String fecRegistro) {
-		Optional<String> fecReg = Optional.ofNullable(fecRegistro);
+	public Banco registrarBanco(final String nombre, final String clave, String fechaRegistro) {
+		Optional<String> fecReg = Optional.ofNullable(fechaRegistro);
 		Banco banco = new Banco(nombre, clave,  fecReg.isPresent() ? LocalDate.parse(fecReg.get()) : LocalDate.now());
 		return bancoRepository.save(banco);
 	}
