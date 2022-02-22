@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.ivra.graphql.graphql.model.Banco;
 import com.ivra.graphql.graphql.model.Cliente;
+import com.ivra.graphql.graphql.model.Cuenta;
 import com.ivra.graphql.graphql.service.BancoService;
 import com.ivra.graphql.graphql.service.ClienteService;
+import com.ivra.graphql.graphql.service.CuentaService;
 
 @Component
 public class QueryResolver implements GraphQLQueryResolver {
@@ -20,6 +22,9 @@ public class QueryResolver implements GraphQLQueryResolver {
 	
 	@Autowired
 	private BancoService bancoService;
+	
+	@Autowired 
+	private CuentaService cuentaService;
 	
 	public List<Cliente> clientes(final int registros) {
 		return ClienteService.clientes(registros);
@@ -35,5 +40,9 @@ public class QueryResolver implements GraphQLQueryResolver {
 	
 	public List<Banco> bancos(final int registros){
 		return bancoService.bancos(registros);
+	}
+	
+	public Cuenta cuenta(Long idCuenta) {
+		return cuentaService.findById(idCuenta);
 	}
 }

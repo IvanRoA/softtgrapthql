@@ -1,3 +1,9 @@
+type Cuenta{
+	id: ID!
+	numeroCuenta: String!
+	clave: String!
+}
+
 type Banco {
 	id: ID!
 	nombre: String
@@ -18,6 +24,7 @@ type Query {
 	banco(id: ID): Banco
 	clientes(registros: Int): [Cliente]
 	cliente(id: ID): Cliente
+	cuenta(idCuenta: ID): Cuenta
 }
 
 type Mutation {
@@ -33,4 +40,9 @@ type Mutation {
 		apellidoPaterno: String
 		apellidoMaterno: String
 	): Cliente
+	
+	registrarCuenta(
+		numeroCuenta: String
+		clave: String
+	): Cuenta
 }
