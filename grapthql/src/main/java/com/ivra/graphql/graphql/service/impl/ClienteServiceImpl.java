@@ -21,8 +21,8 @@ public class ClienteServiceImpl implements ClienteService {
 	
 	public Cliente registrarCliente(final String nombre, final String correo
 			, final String apellidoPaterno, final String apellidoMaterno) {
-		Cliente p = new Cliente(nombre, correo, apellidoPaterno, apellidoMaterno);
-		return repo.save(p);
+		Cliente cliente = new Cliente(nombre, correo, apellidoPaterno, apellidoMaterno);
+		return repo.save(cliente);
 	}
 	
 	public Optional<Cliente> cliente(final int id) {
