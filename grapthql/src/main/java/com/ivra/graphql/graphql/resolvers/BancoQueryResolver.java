@@ -3,24 +3,12 @@ package com.ivra.graphql.graphql.resolvers;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.ivra.graphql.graphql.model.Banco;
-import com.ivra.graphql.graphql.service.BancoService;
 
-@Component
-public class BancoQueryResolver implements GraphQLQueryResolver {
+public interface BancoQueryResolver {
 
-	@Autowired
-	private BancoService bancoService;
+	public Optional<Banco> banco(final int id);
 	
-	public Optional<Banco> banco(final int id){
-		return bancoService.banco(id);
-	}
+	public List<Banco> bancos(final int registros);
 	
-	public List<Banco> bancos(final int registros){
-		return bancoService.bancos(registros);
-	}
 }
