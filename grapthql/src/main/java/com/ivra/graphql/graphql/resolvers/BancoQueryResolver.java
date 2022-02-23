@@ -1,15 +1,14 @@
-package com.ivra.graphql.graphql.service;
+package com.ivra.graphql.graphql.resolvers;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.ivra.graphql.graphql.model.Banco;
 
-public interface BancoService {
+public interface BancoQueryResolver {
 
-	public Banco registrarBanco(final String nombre, final String clave, String fechaRegistro);
-	
 	public Optional<Banco> banco(final int id);
 	
 	public List<Banco> bancos(final int registros);
+	
 }

@@ -24,7 +24,8 @@ type Query {
 	banco(id: ID): Banco
 	clientes(registros: Int): [Cliente]
 	cliente(id: ID): Cliente
-	cuenta(idCuenta: ID): Cuenta
+	findCuentaById(idCuenta: ID): Cuenta
+	findAllCuenta(limit: Int): [Cuenta]
 }
 
 type Mutation {
@@ -33,7 +34,6 @@ type Mutation {
 		clave: String!
 		fechaRegistro: String
 	): Banco
-	
 	registrarCliente(
 		nombre: String!
 		correo: String!
@@ -41,8 +41,19 @@ type Mutation {
 		apellidoMaterno: String
 	): Cliente
 	
-	registrarCuenta(
+	saveCuenta(
 		numeroCuenta: String
 		clave: String
 	): Cuenta
+	
+	deleteCuenta(
+		id: ID
+	): Cuenta
+	
+	updateCuenta(
+		id: ID
+		numeroCuenta: String
+		clave: String
+	): Cuenta
+	
 }

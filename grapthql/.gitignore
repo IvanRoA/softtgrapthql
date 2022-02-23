@@ -1,1 +1,26 @@
+<<<<<<< HEAD
 /target/
+=======
+
+.gradle
+.m2
+
+target/
+build/
+
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.metadata
+bin/
+
+.nbattrs
+nbproject/private/
+build/
+nbbuild/
+dist/nbdist/
+.nb-gradle
+>>>>>>> a3748b7f8c6d21ff30946af56740f8aa395ebf8a
