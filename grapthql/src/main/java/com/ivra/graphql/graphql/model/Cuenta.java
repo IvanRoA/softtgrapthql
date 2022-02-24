@@ -13,9 +13,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Cuenta implements Serializable{
 	
 	private static final long serialVersionUID = 3409223565395875014L;
@@ -26,5 +26,50 @@ public class Cuenta implements Serializable{
 	private String numeroCuenta;
 	
 	private String clave;
+
+	public Cuenta() {
+		super();
+	}
+
+	public Cuenta(String numeroCuenta, String clave) {
+		super();
+		this.numeroCuenta = numeroCuenta;
+		this.clave = clave;
+	}
+
+	public Cuenta(Long id, String numeroCuenta, String clave) {
+		super();
+		this.id = id;
+		this.numeroCuenta = numeroCuenta;
+		this.clave = clave;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNumeroCuenta() {
+		return numeroCuenta;
+	}
+
+	public void setNumeroCuenta(String numeroCuenta) {
+		this.numeroCuenta = numeroCuenta;
+	}
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }

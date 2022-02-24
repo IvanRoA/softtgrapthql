@@ -13,10 +13,19 @@ public class ClienteMutationResolverImpl implements ClienteMutationResolver, Gra
 
 	@Autowired
 	private ClienteService clienteService;
-	
-	public Cliente registrarCliente(final String nombre, String correo, 
-			final String apellidoPaterno, final String apellidoMaterno) {
-		return clienteService.registrarCliente(nombre, correo, apellidoPaterno, apellidoMaterno);
+
+	@Override
+	public Cliente saveCliente(String nombre, String correo, String apellidoPaterno, String apellidoMaterno) {
+		return clienteService.save(new Cliente(nombre, correo, apellidoPaterno, apellidoMaterno));
 	}
 
+	@Override
+	public Cliente deleteCliente(Long id) {
+		return clienteService.deleteById(id);
+	}
+
+	@Override
+	public Cliente updateCliente(Long id, String nombre, String correo, String apellidoPaterno, String apellidoMaterno) {
+		return clienteService.update(new Cliente(id, nombre, correo, apellidoPaterno, apellidoMaterno));
+	}
 }

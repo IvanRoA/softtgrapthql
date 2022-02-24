@@ -1,7 +1,6 @@
 package com.ivra.graphql.graphql.resolvers.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,11 +16,13 @@ public class ClienteQueryResolverImpl implements ClienteQueryResolver, GraphQLQu
 	@Autowired
 	private ClienteService clienteService;
 	
-	public List<Cliente> clientes(final int registros) {
-		return clienteService.clientes(registros);
+	@Override
+	public Cliente findClienteById(Long idCliente) {
+		return clienteService.findById(idCliente);
 	}
-	
-	public Optional<Cliente> cliente(final int id) {
-		return clienteService.cliente(id);
+
+	@Override
+	public List<Cliente> findAllCliente(int limit) {
+		return clienteService.findAll(limit);
 	}
 }

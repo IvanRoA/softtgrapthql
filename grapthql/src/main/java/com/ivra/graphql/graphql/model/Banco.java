@@ -17,7 +17,7 @@ public class Banco implements Serializable {
 	@Id
 	@Column(name = "ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	@Column
 	private String nombre;
 	@Column(name = "clave", nullable = false)
@@ -36,11 +36,19 @@ public class Banco implements Serializable {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public int getId() {
+	public Banco(Long id, String nombre, String clave, LocalDate fechaRegistro) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.clave = clave;
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

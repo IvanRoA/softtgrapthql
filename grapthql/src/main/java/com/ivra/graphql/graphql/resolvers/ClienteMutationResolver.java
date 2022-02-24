@@ -4,7 +4,10 @@ import com.ivra.graphql.graphql.model.Cliente;
 
 public interface ClienteMutationResolver {
 
-	public Cliente registrarCliente(final String nombre, String correo, 
-			final String apellidoPaterno, final String apellidoMaterno);
+	Cliente saveCliente(String nombre, String correo, String apellidoPaterno, String apellidoMaterno);
+
+	Cliente deleteCliente(Long id);
+
+	Cliente updateCliente(Long id, String nombre, String correo, String apellidoPaterno, String apellidoMaterno);
 	
 }

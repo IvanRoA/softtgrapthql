@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ivra.graphql.graphql.model.Banco;
 
 @Repository
-public interface BancoRepository extends JpaRepository<Banco, Integer> {
+public interface BancoRepository extends JpaRepository<Banco, Long> {
 
 }

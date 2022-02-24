@@ -16,7 +16,7 @@ public class CuentaMutationResolverImpl implements CuentaMutationResolver, Graph
 
 	@Override
 	public Cuenta saveCuenta(String numeroCuenta, String clave) {
-		return cuentaService.save(new Cuenta(null, numeroCuenta, clave));
+		return cuentaService.save(new Cuenta(numeroCuenta, clave));
 	}
 
 	@Override

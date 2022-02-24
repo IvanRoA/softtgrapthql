@@ -16,7 +16,7 @@ public class Colonia implements Serializable {
 	@Id
 	@Column(name = "ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	@Column(name = "descripcion", nullable = false)
 	private String descripcion;
 	@Column
@@ -51,11 +51,25 @@ public class Colonia implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public int getId() {
+	public Colonia(Long id, String descripcion, String clave0, String clave1, String clave2, String clave3,
+			String clave4, String clave5, int fecha) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+		this.clave0 = clave0;
+		this.clave1 = clave1;
+		this.clave2 = clave2;
+		this.clave3 = clave3;
+		this.clave4 = clave4;
+		this.clave5 = clave5;
+		this.fecha = fecha;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -1,7 +1,6 @@
 package com.ivra.graphql.graphql.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +16,7 @@ public class Cliente implements Serializable {
 	@Id
 	@Column(name = "ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	@Column
 	private String nombre;
@@ -43,7 +42,7 @@ public class Cliente implements Serializable {
 		this.apellidoMaterno = apellidoMaterno;
 	}
 
-	public Cliente(int id, String nombre, String correo, String apellidoPaterno, String apellidoMaterno) {
+	public Cliente(Long id, String nombre, String correo, String apellidoPaterno, String apellidoMaterno) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -52,11 +51,11 @@ public class Cliente implements Serializable {
 		this.apellidoMaterno = apellidoMaterno;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

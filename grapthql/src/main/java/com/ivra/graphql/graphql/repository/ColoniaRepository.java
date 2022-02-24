@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ivra.graphql.graphql.model.Colonia;
 
 @Repository
-public interface ColoniaRepository extends JpaRepository<Colonia, Integer> {
+public interface ColoniaRepository extends JpaRepository<Colonia, Long> {
 
 }

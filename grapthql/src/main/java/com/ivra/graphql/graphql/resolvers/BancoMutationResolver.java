@@ -4,6 +4,10 @@ import com.ivra.graphql.graphql.model.Banco;
 
 public interface BancoMutationResolver {
 
-	public Banco registrarBanco(final String nombre, final String clave, final String fechaRegistro);
+	Banco saveBanco(String nombre, String clave, String fechaRegistro);
+
+	Banco deleteBanco(Long id);
+
+	Banco updateBanco(Long id, String nombre, String clave, String fechaRegistro);
 	
 }

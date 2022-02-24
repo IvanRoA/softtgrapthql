@@ -19,22 +19,69 @@ type Cliente {
 	apellidoMaterno: String
 }
 
+type Archivo{
+	id: ID!
+	nombre: String!
+	fechaCarga: String!
+}
+
+type Colonia{
+	id: ID!
+	descripcion: String!
+	clave0: String
+	clave1: String
+	clave2: String
+	clave3: String
+	clave4: String
+	clave5: String
+	fecha: Int
+}
+
 type Query {
-	bancos(registros: Int): [Banco]
-	banco(id: ID): Banco
-	clientes(registros: Int): [Cliente]
-	cliente(id: ID): Cliente
+	findAllBanco(limit: Int): [Banco]
+	findBancoById(idBanco: ID): Banco
+	findAllCliente(limit: Int): [Cliente]
+	findClienteById(idCliente: ID): Cliente
 	findCuentaById(idCuenta: ID): Cuenta
 	findAllCuenta(limit: Int): [Cuenta]
+	cargarArchivos: [Archivo]
+	findArchivoById(idArchivo: ID): Archivo
+	findAllArchivo(limit: Int): [Archivo]
+	findColoniaById(idColonia: ID): Colonia
+	findAllColonia(limit: Int): [Colonia]
 }
 
 type Mutation {
-	registrarBanco(
+	saveBanco(
 		nombre: String!	
 		clave: String!
 		fechaRegistro: String
 	): Banco
-	registrarCliente(
+	
+	deleteBanco(
+		id: ID
+	): Banco
+	
+	updateBanco(
+		id: ID
+		nombre: String!	
+		clave: String!
+		fechaRegistro: String
+	): Banco
+	
+	saveCliente(
+		nombre: String!
+		correo: String!
+		apellidoPaterno: String
+		apellidoMaterno: String
+	): Cliente
+	
+	deleteCliente(
+		id: ID
+	): Cliente
+	
+	updateCliente(
+		id: ID
 		nombre: String!
 		correo: String!
 		apellidoPaterno: String
@@ -56,4 +103,45 @@ type Mutation {
 		clave: String
 	): Cuenta
 	
+	saveArchivo(
+		nombre: String
+		fechaCarga: String
+	): Archivo
+	
+	deleteArchivo(
+		id: ID
+	): Archivo
+	
+	updateArchivo(
+		id: ID
+		nombre: String
+		fechaCarga: String
+	): Archivo
+	
+	saveColonia(
+		descripcion: String
+		clave0: String
+		clave1: String
+		clave2: String
+		clave3: String
+		clave4: String
+		clave5: String
+		fecha: Int
+	): Colonia
+	
+	deleteColonia(
+		id: ID
+	): Colonia
+	
+	updateColonia(
+		id: ID
+		descripcion: String
+		clave0: String
+		clave1: String
+		clave2: String
+		clave3: String
+		clave4: String
+		clave5: String
+		fecha: Int
+	): Colonia
 }

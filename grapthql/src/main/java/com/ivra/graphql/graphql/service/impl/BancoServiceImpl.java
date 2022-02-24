@@ -1,10 +1,10 @@
 package com.ivra.graphql.graphql.service.impl;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ivra.graphql.graphql.model.Banco;
@@ -14,24 +14,41 @@ import com.ivra.graphql.graphql.service.BancoService;
 @Service
 public class BancoServiceImpl implements BancoService {
 	
+	@Autowired
 	private BancoRepository bancoRepository;
-
-	public BancoServiceImpl(BancoRepository bancoRepository) {
-		this.bancoRepository = bancoRepository;
+	
+	@Override
+	public Banco findById(final Long id){
+		Optional<Banco> banco = bancoRepository.findById(id);
+		if(banco.isPresent()) {
+			return banco.get();
+		}
+		throw new RuntimeException("No existe el banco");
 	}
 	
-	public Banco registrarBanco(final String nombre, final String clave, String fechaRegistro) {
-		Optional<String> fecReg = Optional.ofNullable(fechaRegistro);
-		Banco banco = new Banco(nombre, clave,  fecReg.isPresent() ? LocalDate.parse(fecReg.get()) : LocalDate.now());
+	@Override
+	public List<Banco> findAll(final int registros){
+		return bancoRepository.findAll(Pageable.ofSize(registros)).getContent();
+	}
+	
+	@Override
+	public Banco save(Banco banco) {
 		return bancoRepository.save(banco);
 	}
 	
-	public Optional<Banco> banco(final int id){
-		return bancoRepository.findById(id);
+	@Override
+	public Banco update(Banco banco) {
+		Banco ban = findById(banco.getId());
+		ban.setNombre(banco.getNombre());
+		ban.setClave(banco.getClave());
+		ban.setFechaRegistro(banco.getFechaRegistro());
+		return bancoRepository.save(ban);
 	}
 	
-	public List<Banco> bancos(final int registros){
-		return bancoRepository.findAll().stream().limit(registros).collect(Collectors.toList());
+	@Override
+	public Banco deleteById(Long id) {
+		Banco banco = findById(id);
+		bancoRepository.delete(banco);
+		return banco;
 	}
-
 }

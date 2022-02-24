@@ -1,5 +1,8 @@
 package com.ivra.graphql.graphql.resolvers.impl;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +17,20 @@ public class BancoMutationResolverImpl implements BancoMutationResolver, GraphQL
 	@Autowired
 	private BancoService bancoService;
 	
-	public Banco registrarBanco(final String nombre, final String clave, final String fechaRegistro) {
-		return bancoService.registrarBanco(nombre, clave, fechaRegistro);
+	@Override
+	public Banco saveBanco(String nombre, String clave, String fechaRegistro) {
+		Optional<String> fecReg = Optional.ofNullable(fechaRegistro);
+		return bancoService.save(new Banco(nombre, clave, fecReg.isPresent() ? LocalDate.parse(fecReg.get()) : LocalDate.now()));
+	}
+
+	@Override
+	public Banco deleteBanco(Long id) {
+		return bancoService.deleteById(id);
+	}
+
+	@Override
+	public Banco updateBanco(Long id, String nombre, String clave, String fechaRegistro) {
+		Optional<String> fecReg = Optional.ofNullable(fechaRegistro);
+		return bancoService.update(new Banco(id, nombre, clave, fecReg.isPresent() ? LocalDate.parse(fecReg.get()) : LocalDate.now()));
 	}
 }

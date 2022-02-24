@@ -1,7 +1,6 @@
 package com.ivra.graphql.graphql.resolvers.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,12 +16,14 @@ public class BancoQueryResolverImpl implements BancoQueryResolver, GraphQLQueryR
 	@Autowired
 	private BancoService bancoService;
 	
-	public Optional<Banco> banco(final int id){
-		return bancoService.banco(id);
+	@Override
+	public Banco findBancoById(Long idBanco) {
+		return bancoService.findById(idBanco);
 	}
-	
-	public List<Banco> bancos(final int registros){
-		return bancoService.bancos(registros);
+
+	@Override
+	public List<Banco> findAllBanco(int limit) {
+		return bancoService.findAll(limit);
 	}
 	
 }

@@ -2,8 +2,9 @@ package com.ivra.graphql.graphql.service.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ivra.graphql.graphql.model.Cliente;
@@ -13,23 +14,42 @@ import com.ivra.graphql.graphql.service.ClienteService;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-	private ClienteRepository repo;
+	@Autowired
+	private ClienteRepository clienteRepository;
 	
-	public ClienteServiceImpl(ClienteRepository repo) {
-		this.repo = repo;
+	@Override
+	public Cliente findById(final Long id){
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+		if(cliente.isPresent()) {
+			return cliente.get();
+		}
+		throw new RuntimeException("No existe el cliente");
 	}
 	
-	public Cliente registrarCliente(final String nombre, final String correo
-			, final String apellidoPaterno, final String apellidoMaterno) {
-		Cliente cliente = new Cliente(nombre, correo, apellidoPaterno, apellidoMaterno);
-		return repo.save(cliente);
+	@Override
+	public List<Cliente> findAll(final int registros){
+		return clienteRepository.findAll(Pageable.ofSize(registros)).getContent();
 	}
 	
-	public Optional<Cliente> cliente(final int id) {
-		return repo.findById(id);
+	@Override
+	public Cliente save(Cliente cliente) {
+		return clienteRepository.save(cliente);
 	}
 	
-	public List<Cliente> clientes(final int registros) {
-		return repo.findAll().stream().limit(registros).collect(Collectors.toList());
+	@Override
+	public Cliente update(Cliente cliente) {
+		Cliente cli = findById(cliente.getId());
+		cli.setNombre(cliente.getNombre());
+		cli.setCorreo(cliente.getCorreo());
+		cli.setApellidoPaterno(cliente.getApellidoPaterno());
+		cli.setApellidoMaterno(cliente.getApellidoMaterno());
+		return clienteRepository.save(cli);
+	}
+	
+	@Override
+	public Cliente deleteById(Long id) {
+		Cliente cliente = findById(id);
+		clienteRepository.delete(cliente);
+		return cliente;
 	}
 }
