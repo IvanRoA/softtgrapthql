@@ -52,7 +52,7 @@ public class LeerArchivoServiceImpl implements LeerArchivoService {
 		Path destino = Paths.get("./src/main/resources/copias/archivo.txt");
 		
 		try {
-            Files.move(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
         	e.printStackTrace();
         }
