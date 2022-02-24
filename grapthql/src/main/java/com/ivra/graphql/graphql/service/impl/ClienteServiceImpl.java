@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.ivra.graphql.graphql.exception.NotFoundException;
 import com.ivra.graphql.graphql.model.Cliente;
 import com.ivra.graphql.graphql.repository.ClienteRepository;
 import com.ivra.graphql.graphql.service.ClienteService;
@@ -23,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
 		if(cliente.isPresent()) {
 			return cliente.get();
 		}
-		throw new RuntimeException("No existe el cliente");
+		throw new NotFoundException("No existe el cliente", "Cliente");
 	}
 	
 	@Override

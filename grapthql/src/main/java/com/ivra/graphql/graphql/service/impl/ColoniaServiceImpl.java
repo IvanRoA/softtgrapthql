@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.ivra.graphql.graphql.exception.NotFoundException;
 import com.ivra.graphql.graphql.model.Colonia;
 import com.ivra.graphql.graphql.repository.ColoniaRepository;
 import com.ivra.graphql.graphql.service.ColoniaService;
@@ -23,7 +24,7 @@ public class ColoniaServiceImpl implements ColoniaService {
 		if(colonia.isPresent()) {
 			return colonia.get();
 		}
-		throw new RuntimeException("No existe la colonia");
+		throw new NotFoundException("No existe la colonia", "Colonia");
 	}
 	
 	@Override

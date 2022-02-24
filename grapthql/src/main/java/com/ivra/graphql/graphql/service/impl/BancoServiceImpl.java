@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.ivra.graphql.graphql.exception.NotFoundException;
 import com.ivra.graphql.graphql.model.Banco;
 import com.ivra.graphql.graphql.repository.BancoRepository;
 import com.ivra.graphql.graphql.service.BancoService;
@@ -23,7 +24,7 @@ public class BancoServiceImpl implements BancoService {
 		if(banco.isPresent()) {
 			return banco.get();
 		}
-		throw new RuntimeException("No existe el banco");
+		throw new NotFoundException("No existe el banco","Banco");
 	}
 	
 	@Override

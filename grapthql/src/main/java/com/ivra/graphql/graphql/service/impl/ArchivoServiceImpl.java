@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.ivra.graphql.graphql.exception.NotFoundException;
 import com.ivra.graphql.graphql.model.Archivo;
 import com.ivra.graphql.graphql.repository.ArchivoRepository;
 import com.ivra.graphql.graphql.service.ArchivoService;
@@ -33,7 +34,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		if(archivo.isPresent()) {
 			return archivo.get();
 		}
-		throw new RuntimeException("No existe el archivo");  
+		throw new NotFoundException("No existe el archivo", "Archivo");  
 	}
 	
 	@Override
