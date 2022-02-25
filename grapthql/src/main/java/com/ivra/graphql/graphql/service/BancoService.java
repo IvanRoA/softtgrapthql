@@ -16,4 +16,5 @@ public interface BancoService {
 
 	Banco deleteById(Long id);
 
+	List<Banco> findBy(String filter,String separator);
 }

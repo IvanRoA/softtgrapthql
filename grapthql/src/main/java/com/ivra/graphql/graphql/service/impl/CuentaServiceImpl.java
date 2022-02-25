@@ -20,6 +20,7 @@ public class CuentaServiceImpl implements CuentaService{
 	@Override
 	public Cuenta findById(Long id) {
 		Optional<Cuenta> cuentaOptional = cuentaRepository.findById(id);
+
 		if(cuentaOptional.isPresent()) {
 			return cuentaOptional.get();
 		}

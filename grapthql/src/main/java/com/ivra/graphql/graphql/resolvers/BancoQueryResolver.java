@@ -9,5 +9,7 @@ public interface BancoQueryResolver {
 	Banco findBancoById(Long idBanco);
 
 	List<Banco> findAllBanco(int limit);
+
+	List<Banco> findBancosByFilter(String filter,String separator);
 	
 }

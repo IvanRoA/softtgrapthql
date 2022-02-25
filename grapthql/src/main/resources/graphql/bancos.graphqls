@@ -62,6 +62,7 @@ type CatalogoT{
 type Query {
 	findAllBanco(limit: Int): [Banco]
 	findBancoById(idBanco: ID): Banco
+	findBancosByFilter(filter: String!,separator:String): [Banco]
 	findAllCliente(limit: Int): [Cliente]
 	findClienteById(idCliente: ID): Cliente
 	findCuentaById(idCuenta: ID): Cuenta
