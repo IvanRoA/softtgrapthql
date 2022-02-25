@@ -25,16 +25,38 @@ type Archivo{
 	fechaCarga: String!
 }
 
-type Colonia{
-	id: ID!
-	descripcion: String!
-	clave0: String
-	clave1: String
-	clave2: String
-	clave3: String
-	clave4: String
-	clave5: String
-	fecha: Int
+type CatalogoT{
+	processDate: ID!
+	hora: String!
+	moneda: String
+	precio: String
+	siefore: String
+	valor: String
+	col2: String
+	col3: String
+	col4: String
+	col5: String
+	col6: String
+	col7: String
+	col8: String
+	col9: String
+	cveIva: String
+	tasaIva: String
+	ISR: String
+	indice: String
+	region: String
+	plazo: Int
+	t_bruta: String
+	lim_inf: String
+	lim_sup: String
+	divMet: String
+	denomin: String
+	venta: String
+	cveTc: String
+	compra: String
+	diario: String
+	mensual: String
+	anual: String
 }
 
 type Query {
@@ -47,8 +69,8 @@ type Query {
 	cargarArchivos: [Archivo]
 	findArchivoById(idArchivo: ID): Archivo
 	findAllArchivo(limit: Int): [Archivo]
-	findColoniaById(idColonia: ID): Colonia
-	findAllColonia(limit: Int): [Colonia]
+	findCatalogoTById(idCatalogoT: ID): CatalogoT
+	findAllCatalogoT(limit: Int): [CatalogoT]
 }
 
 type Mutation {
@@ -118,30 +140,74 @@ type Mutation {
 		fechaCarga: String
 	): Archivo
 	
-	saveColonia(
-		descripcion: String
-		clave0: String
-		clave1: String
-		clave2: String
-		clave3: String
-		clave4: String
-		clave5: String
-		fecha: Int
-	): Colonia
+	saveCatalogoT(
+		hora: String!
+		moneda: String
+		precio: String
+		siefore: String
+		valor: String
+		col2: String
+		col3: String
+		col4: String
+		col5: String
+		col6: String
+		col7: String
+		col8: String
+		col9: String
+		cveIva: String
+		tasaIva: String
+		ISR: String
+		indice: String
+		region: String
+		plazo: Int
+		t_bruta: String
+		lim_inf: String
+		lim_sup: String
+		divMet: String
+		denomin: String
+		venta: String
+		cveTc: String
+		compra: String
+		diario: String
+		mensual: String
+		anual: String
+	): CatalogoT
 	
-	deleteColonia(
+	deleteCatalogoT(
 		id: ID
-	): Colonia
+	): CatalogoT
 	
-	updateColonia(
-		id: ID
-		descripcion: String
-		clave0: String
-		clave1: String
-		clave2: String
-		clave3: String
-		clave4: String
-		clave5: String
-		fecha: Int
-	): Colonia
+	updateCatalogoT(
+		processDate: ID!
+		hora: String
+		moneda: String
+		precio: String
+		siefore: String
+		valor: String
+		col2: String
+		col3: String
+		col4: String
+		col5: String
+		col6: String
+		col7: String
+		col8: String
+		col9: String
+		cveIva: String
+		tasaIva: String
+		ISR: String
+		indice: String
+		region: String
+		plazo: Int
+		t_bruta: String
+		lim_inf: String
+		lim_sup: String
+		divMet: String
+		denomin: String
+		venta: String
+		cveTc: String
+		compra: String
+		diario: String
+		mensual: String
+		anual: String
+	): CatalogoT
 }
