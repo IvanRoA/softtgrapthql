@@ -6,8 +6,8 @@ import com.ivra.graphql.graphql.model.CatalogoD;
 
 public interface CatalogoDQueryResolver {
 	
-	public CatalogoD findCatalogoDById(Long idCuenta);
+	CatalogoD findCatalogoDById(Long idCuenta);
 	
-	public List<CatalogoD> findAllCatalogoD(int limit);
+	List<CatalogoD> findAllCatalogoD(int limit);
 
 }

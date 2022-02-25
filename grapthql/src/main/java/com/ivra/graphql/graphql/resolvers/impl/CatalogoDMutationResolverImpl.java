@@ -9,7 +9,7 @@ import com.ivra.graphql.graphql.resolvers.CatalogoDMutationResolver;
 import com.ivra.graphql.graphql.service.CatalogoDService;
 
 @Component
-public class CatalogoDMutationResolverImpl implements CatalogoDMutationResolver, GraphQLMutationResolver {
+public class CatalogoDMutationResolverImpl implements CatalogoDMutationResolver, GraphQLMutationResolver{
 	
 	@Autowired
 	private CatalogoDService cuentaService;

@@ -8,12 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
 public class CatalogoD implements Serializable{
 	
 	private static final long serialVersionUID = 3409223565395875014L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -39,7 +37,7 @@ public class CatalogoD implements Serializable{
 		this.screenDesc = screenDesc;
 		this.abbreviation = abbreviation;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}

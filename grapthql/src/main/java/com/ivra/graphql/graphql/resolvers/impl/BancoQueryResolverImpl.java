@@ -25,5 +25,10 @@ public class BancoQueryResolverImpl implements BancoQueryResolver, GraphQLQueryR
 	public List<Banco> findAllBanco(int limit) {
 		return bancoService.findAll(limit);
 	}
+
+	@Override
+	public List<Banco> findBancosByFilter(String filter,String separator) {
+		return bancoService.findBy(filter,separator);
+	}
 	
 }

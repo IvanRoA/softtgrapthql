@@ -14,26 +14,27 @@ import com.ivra.graphql.graphql.service.CatalogoDService;
 @Service
 public class CatalogoDServiceImpl implements CatalogoDService{
 	
-	@Autowired CatalogoDRepository cuentaRepository;
+	@Autowired CatalogoDRepository catalogoDRepository;
 
 	@Override
 	public CatalogoD findById(Long id) {
-		Optional<CatalogoD> catalogoDOptional = cuentaRepository.findById(id);
-		if(catalogoDOptional.isPresent()) {
-			return catalogoDOptional.get();
+		Optional<CatalogoD> cuentaOptional = catalogoDRepository.findById(id);
+
+		if(cuentaOptional.isPresent()) {
+			return cuentaOptional.get();
 		}
 		throw new NotFoundException("No existe la cuenta", "Cuenta");
 	}
 
 	@Override
 	public CatalogoD save(CatalogoD catalogoD) {
-		return cuentaRepository.save(catalogoD);
+		return catalogoDRepository.save(catalogoD);
 	}
 
 	@Override
 	public CatalogoD deleteById(Long id) {
 		CatalogoD cuenta =  findById(id);
-		cuentaRepository.delete(cuenta);
+		catalogoDRepository.delete(cuenta);
 		return cuenta;
 	}
 
@@ -46,12 +47,12 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 		catalogoDPersist.setShortDesc(catalogoD.getShortDesc());
 		catalogoDPersist.setScreenDesc(catalogoD.getScreenDesc());
 		catalogoDPersist.setAbbreviation(catalogoD.getAbbreviation());
-		return cuentaRepository.save(catalogoDPersist);
+		return catalogoDRepository.save(catalogoDPersist);
 	}
 
 	@Override
 	public List<CatalogoD> findAll(int limit) {
-		return cuentaRepository.findAll();
+		return catalogoDRepository.findAll();
 	}
 
 }

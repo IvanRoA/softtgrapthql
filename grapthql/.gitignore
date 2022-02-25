@@ -19,3 +19,10 @@ build/
 nbbuild/
 dist/nbdist/
 .nb-gradle
+
+out
+.idea/*
+*.ipr
+*.iws
+*.iml
+athassian-ide-plugin.xml
