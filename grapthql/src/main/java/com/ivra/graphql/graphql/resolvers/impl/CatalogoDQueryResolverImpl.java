@@ -14,16 +14,21 @@ import com.ivra.graphql.graphql.service.CatalogoDService;
 public class CatalogoDQueryResolverImpl implements CatalogoDQueryResolver, GraphQLQueryResolver {
 	
 	@Autowired
-	private CatalogoDService cuentaService;
+	private CatalogoDService catalogoDService;
 
 	@Override
 	public CatalogoD findCatalogoDById(Long idCatalogoD) {
-		return cuentaService.findById(idCatalogoD);
+		return catalogoDService.findById(idCatalogoD);
 	}
 
 	@Override
 	public List<CatalogoD> findAllCatalogoD(int limit) {
-		return cuentaService.findAll(limit);
+		return catalogoDService.findAll(limit);
+	}
+	
+	@Override
+	public List<CatalogoD> findCatalogoDByFilter(String filter,String separator) {
+		return catalogoDService.findBy(filter,separator);
 	}
 
 }

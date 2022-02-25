@@ -6,14 +6,16 @@ import com.ivra.graphql.graphql.model.CatalogoD;
 
 public interface CatalogoDService {
 	
-public CatalogoD findById(Long id);
+	CatalogoD findById(Long id);
 	
-	public CatalogoD save(CatalogoD catalogoD);
+	CatalogoD save(CatalogoD catalogoD);
 	
-	public CatalogoD deleteById(Long id);
+	CatalogoD deleteById(Long id);
 	
-	public CatalogoD update(CatalogoD catalogoD);
+	CatalogoD update(CatalogoD catalogoD);
 	
-	public List<CatalogoD> findAll(int limit);
+	List<CatalogoD> findAll(int limit);
+	
+	List<CatalogoD> findBy(String filter,String separator);
 
 }

@@ -9,5 +9,7 @@ public interface CatalogoDQueryResolver {
 	CatalogoD findCatalogoDById(Long idCuenta);
 	
 	List<CatalogoD> findAllCatalogoD(int limit);
+	
+	List<CatalogoD> findCatalogoDByFilter(String filter,String separator);
 
 }
