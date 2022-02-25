@@ -1,7 +1,11 @@
-type Cuenta{
+type CatalogoD{
 	id: ID!
-	numeroCuenta: String!
-	clave: String!
+	processDate: String
+	relCatId: String
+	fullDesc: String
+	shortDesc: String
+	screenDesc: String
+	abbreviation: String
 }
 
 type Banco {
@@ -42,8 +46,8 @@ type Query {
 	findBancoById(idBanco: ID): Banco
 	findAllCliente(limit: Int): [Cliente]
 	findClienteById(idCliente: ID): Cliente
-	findCuentaById(idCuenta: ID): Cuenta
-	findAllCuenta(limit: Int): [Cuenta]
+	findCatalogoDById(idCuenta: ID): CatalogoD
+	findAllCatalogoD(limit: Int): [CatalogoD]
 	cargarArchivos: [Archivo]
 	findArchivoById(idArchivo: ID): Archivo
 	findAllArchivo(limit: Int): [Archivo]
@@ -88,20 +92,28 @@ type Mutation {
 		apellidoMaterno: String
 	): Cliente
 	
-	saveCuenta(
-		numeroCuenta: String
-		clave: String
-	): Cuenta
+	saveCatalogoD(
+		processDate: String
+		relCatId: String
+		fullDesc: String
+		shortDesc: String
+		screenDesc: String
+		abbreviation: String
+	): CatalogoD
 	
-	deleteCuenta(
+	deleteCatalogoD(
 		id: ID
-	): Cuenta
+	): CatalogoD
 	
-	updateCuenta(
+	updateCatalogoD(
 		id: ID
-		numeroCuenta: String
-		clave: String
-	): Cuenta
+		processDate: String
+		relCatId: String
+		fullDesc: String
+		shortDesc: String
+		screenDesc: String
+		abbreviation: String
+	): CatalogoD
 	
 	saveArchivo(
 		nombre: String
