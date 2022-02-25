@@ -4,6 +4,16 @@ type Cuenta{
 	clave: String!
 }
 
+type CatalogoD{
+	id: ID!
+	processDate: String
+	relCatId: String
+	fullDesc: String
+	shortDesc: String
+	screenDesc: String
+	abbreviation: String
+}
+
 type Banco {
 	id: ID!
 	nombre: String
@@ -72,6 +82,9 @@ type Query {
 	findAllArchivo(limit: Int): [Archivo]
 	findCatalogoTById(idCatalogoT: ID): CatalogoT
 	findAllCatalogoT(limit: Int): [CatalogoT]
+	findCatalogoTByFilter(filter: String!,separator:String): [CatalogoT]
+	findCatalogoDById(idCuenta: ID): CatalogoD
+	findAllCatalogoD(limit: Int): [CatalogoD]
 }
 
 type Mutation {
@@ -211,4 +224,27 @@ type Mutation {
 		mensual: String
 		anual: String
 	): CatalogoT
+	
+	saveCatalogoD(
+        processDate: String
+        relCatId: String
+        fullDesc: String
+        shortDesc: String
+        screenDesc: String
+        abbreviation: String
+    ): CatalogoD
+    
+    updateCatalogoD(
+        id: ID!
+        processDate: String
+        relCatId: String
+        fullDesc: String
+        shortDesc: String,
+        screenDesc: String
+        abbreviation: String
+    ): CatalogoD
+    
+    deleteCatalogoD(
+    	id: ID
+    ): CatalogoD
 }

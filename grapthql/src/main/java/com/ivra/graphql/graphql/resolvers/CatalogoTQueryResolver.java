@@ -9,5 +9,7 @@ public interface CatalogoTQueryResolver {
 	CatalogoT findCatalogoTById(Long processDate);
 
 	List<CatalogoT> findAllCatalogoT(int limit);
+	
+	List<CatalogoT> findCatalogoTByFilter(String filter,String separator);
 
 }

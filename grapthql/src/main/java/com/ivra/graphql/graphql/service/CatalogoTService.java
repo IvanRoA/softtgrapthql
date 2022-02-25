@@ -15,5 +15,7 @@ public interface CatalogoTService {
 	CatalogoT update(CatalogoT catalogoT);
 
 	CatalogoT deleteById(Long processDate);
+	
+	List<CatalogoT> findBy(String filter,String separator);
 
 }
