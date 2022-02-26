@@ -85,6 +85,7 @@ type Query {
 	findCatalogoTByFilter(filter: String!,separator:String): [CatalogoT]
 	findCatalogoDById(idCuenta: ID): CatalogoD
 	findAllCatalogoD(limit: Int): [CatalogoD]
+	findCatalogoDByFilter(filter: String!,separator:String): [CatalogoD]
 }
 
 type Mutation {
