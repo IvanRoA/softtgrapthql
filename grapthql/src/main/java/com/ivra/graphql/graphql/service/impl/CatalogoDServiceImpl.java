@@ -63,8 +63,7 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 
 	@Override
 	public CatalogoD update(CatalogoD catalogoD) {
-		CatalogoD catalogoDPersist = findById(catalogoD.getId());
-		catalogoDPersist.setProcessDate(catalogoD.getProcessDate());
+		CatalogoD catalogoDPersist = findById(catalogoD.getProcessDate());
 		catalogoDPersist.setRelCatId(catalogoD.getRelCatId());
 		catalogoDPersist.setFullDesc(catalogoD.getFullDesc());
 		catalogoDPersist.setShortDesc(catalogoD.getShortDesc());
@@ -103,13 +102,13 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 		}
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<CatalogoD> cq = cb.createQuery(CatalogoD.class);
-		Root<CatalogoD> banco = cq.from(CatalogoD.class);
+		Root<CatalogoD> catalogoD = cq.from(CatalogoD.class);
 		List<Predicate> predicates = new ArrayList<>();
 		mapeoParametros.removeIf(mp->
 			mp.getKey().equals(("limit"))
 		);
 		mapeoParametros.forEach(mp->{
-			predicates.add(banco.get(mp.getKey()).in((String[])mp.getValue()));
+			predicates.add(catalogoD.get(mp.getKey()).in((String[])mp.getValue()));
 		});
 		cq.where(predicates.toArray(new Predicate[0]));
 		Query q = em.createQuery(cq);

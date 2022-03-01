@@ -18,8 +18,8 @@ public class CatalogoDQueryResolverImpl implements CatalogoDQueryResolver, Graph
 	private CatalogoDService catalogoDService;
 
 	@Override
-	public CatalogoD findCatalogoDById(Long idCatalogoD) {
-		return catalogoDService.findById(idCatalogoD);
+	public CatalogoD findCatalogoDById(Long processDate) {
+		return catalogoDService.findById(processDate);
 	}
 
 	@Override

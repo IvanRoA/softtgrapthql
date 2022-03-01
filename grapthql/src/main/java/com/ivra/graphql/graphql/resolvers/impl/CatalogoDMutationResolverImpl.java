@@ -16,7 +16,7 @@ public class CatalogoDMutationResolverImpl implements CatalogoDMutationResolver 
 	@Override
 	public CatalogoD saveCatalogoD(String processDate, String relCatId, String fullDesc,
 			String shortDesc, String screenDesc, String abbreviation) {
-		return cuentaService.save(new CatalogoD(null, processDate, relCatId, fullDesc, shortDesc, screenDesc, 
+		return cuentaService.save(new CatalogoD(null, relCatId, fullDesc, shortDesc, screenDesc, 
 				abbreviation));
 	}
 
@@ -26,9 +26,9 @@ public class CatalogoDMutationResolverImpl implements CatalogoDMutationResolver 
 	}
 
 	@Override
-	public CatalogoD updateCatalogoD(Long id, String processDate, String relCatId, String fullDesc,
+	public CatalogoD updateCatalogoD(Long processDate, String relCatId, String fullDesc,
 			String shortDesc, String screenDesc, String abbreviation) {
-		return cuentaService.update(new CatalogoD(id, processDate, relCatId, fullDesc, shortDesc, screenDesc, abbreviation));
+		return cuentaService.update(new CatalogoD(processDate, relCatId, fullDesc, shortDesc, screenDesc, abbreviation));
 	}
 
 }

@@ -6,7 +6,7 @@ import com.ivra.graphql.graphql.model.CatalogoD;
 
 public interface CatalogoDService {
 	
-	CatalogoD findById(Long id);
+	CatalogoD findById(Long processDate);
 	
 	CatalogoD save(CatalogoD catalogoD);
 	

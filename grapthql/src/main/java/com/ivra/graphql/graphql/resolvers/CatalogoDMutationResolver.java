@@ -8,5 +8,5 @@ public interface CatalogoDMutationResolver {
 	
 	CatalogoD deleteCatalogoD(Long id);
 	
-	CatalogoD updateCatalogoD(Long id, String processDate, String relCatId, String fullDesc, String shortDesc, String screenDesc, String abbreviation);
+	CatalogoD updateCatalogoD(Long processDate, String relCatId, String fullDesc, String shortDesc, String screenDesc, String abbreviation);
 }

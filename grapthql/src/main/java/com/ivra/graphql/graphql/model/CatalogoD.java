@@ -2,7 +2,6 @@ package com.ivra.graphql.graphql.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +14,7 @@ public class CatalogoD implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String processDate;
+	private Long processDate;
 	private String relCatId;
 	private String fullDesc;
 	private String shortDesc;
@@ -27,10 +25,9 @@ public class CatalogoD implements Serializable{
 		super();
 	}
 
-	public CatalogoD(Long id, String processDate, String relCatId, String fullDesc,
+	public CatalogoD(Long processDate, String relCatId, String fullDesc,
 			String shortDesc, String screenDesc, String abbreviation) {
 		super();
-		this.id = id;
 		this.processDate = processDate;
 		this.relCatId = relCatId;
 		this.fullDesc = fullDesc;
@@ -39,19 +36,11 @@ public class CatalogoD implements Serializable{
 		this.abbreviation = abbreviation;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getProcessDate() {
+	public Long getProcessDate() {
 		return processDate;
 	}
 
-	public void setProcessDate(String processDate) {
+	public void setProcessDate(Long processDate) {
 		this.processDate = processDate;
 	}
 

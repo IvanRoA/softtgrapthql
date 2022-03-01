@@ -1,6 +1,5 @@
 type CatalogoD{
-	id: ID!
-	processDate: String
+	processDate: ID!
 	relCatId: String
 	fullDesc: String
 	shortDesc: String
