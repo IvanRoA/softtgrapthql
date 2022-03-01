@@ -3,13 +3,12 @@ package com.ivra.graphql.graphql.resolvers.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.ivra.graphql.graphql.model.CatalogoD;
 import com.ivra.graphql.graphql.resolvers.CatalogoDMutationResolver;
 import com.ivra.graphql.graphql.service.CatalogoDService;
 
 @Component
-public class CatalogoDMutationResolverImpl implements CatalogoDMutationResolver, GraphQLMutationResolver{
+public class CatalogoDMutationResolverImpl implements CatalogoDMutationResolver {
 	
 	@Autowired
 	private CatalogoDService cuentaService;

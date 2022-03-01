@@ -1,20 +1,18 @@
 package com.ivra.graphql.graphql.resolvers.impl;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.ivra.graphql.graphql.model.CatalogoT;
 import com.ivra.graphql.graphql.resolvers.CatalogoTMutationResolver;
 import com.ivra.graphql.graphql.service.CatalogoTService;
 
 @Component
-public class CatalogoTMutationResolverImpl implements CatalogoTMutationResolver, GraphQLMutationResolver {
+public class CatalogoTMutationResolverImpl implements CatalogoTMutationResolver {
 
 	@Autowired
 	private CatalogoTService coloniaService;

@@ -1,9 +1,3 @@
-type Cuenta{
-	id: ID!
-	numeroCuenta: String!
-	clave: String!
-}
-
 type CatalogoD{
 	id: ID!
 	processDate: String
@@ -12,21 +6,6 @@ type CatalogoD{
 	shortDesc: String
 	screenDesc: String
 	abbreviation: String
-}
-
-type Banco {
-	id: ID!
-	nombre: String
-	clave: String!
-	fechaRegistro: String
-}
-
-type Cliente {
-	id: ID!
-	nombre: String
-	correo: String!
-	apellidoPaterno: String
-	apellidoMaterno: String
 }
 
 type Archivo{
@@ -70,13 +49,6 @@ type CatalogoT{
 }
 
 type Query {
-	findAllBanco(limit: Int): [Banco]
-	findBancoById(idBanco: ID): Banco
-	findBancosByFilter(filter: String!,separator:String): [Banco]
-	findAllCliente(limit: Int): [Cliente]
-	findClienteById(idCliente: ID): Cliente
-	findCuentaById(idCuenta: ID): Cuenta
-	findAllCuenta(limit: Int): [Cuenta]
 	cargarArchivos: [Archivo]
 	findArchivoById(idArchivo: ID): Archivo
 	findAllArchivo(limit: Int): [Archivo]
@@ -86,166 +58,4 @@ type Query {
 	findCatalogoDById(idCuenta: ID): CatalogoD
 	findAllCatalogoD(limit: Int): [CatalogoD]
 	findCatalogoDByFilter(filter: String!,separator:String): [CatalogoD]
-}
-
-type Mutation {
-	saveBanco(
-		nombre: String!	
-		clave: String!
-		fechaRegistro: String
-	): Banco
-	
-	deleteBanco(
-		id: ID
-	): Banco
-	
-	updateBanco(
-		id: ID
-		nombre: String!	
-		clave: String!
-		fechaRegistro: String
-	): Banco
-	
-	saveCliente(
-		nombre: String!
-		correo: String!
-		apellidoPaterno: String
-		apellidoMaterno: String
-	): Cliente
-	
-	deleteCliente(
-		id: ID
-	): Cliente
-	
-	updateCliente(
-		id: ID
-		nombre: String!
-		correo: String!
-		apellidoPaterno: String
-		apellidoMaterno: String
-	): Cliente
-	
-	saveCuenta(
-		numeroCuenta: String
-		clave: String
-	): Cuenta
-	
-	deleteCuenta(
-		id: ID
-	): Cuenta
-	
-	updateCuenta(
-		id: ID
-		numeroCuenta: String
-		clave: String
-	): Cuenta
-	
-	saveArchivo(
-		nombre: String
-		fechaCarga: String
-	): Archivo
-	
-	deleteArchivo(
-		id: ID
-	): Archivo
-	
-	updateArchivo(
-		id: ID
-		nombre: String
-		fechaCarga: String
-	): Archivo
-	
-	saveCatalogoT(
-		hora: String!
-		moneda: String
-		precio: String
-		siefore: String
-		valor: String
-		col2: String
-		col3: String
-		col4: String
-		col5: String
-		col6: String
-		col7: String
-		col8: String
-		col9: String
-		cveIva: String
-		tasaIva: String
-		ISR: String
-		indice: String
-		region: String
-		plazo: Int
-		t_bruta: String
-		lim_inf: String
-		lim_sup: String
-		divMet: String
-		denomin: String
-		venta: String
-		cveTc: String
-		compra: String
-		diario: String
-		mensual: String
-		anual: String
-	): CatalogoT
-	
-	deleteCatalogoT(
-		id: ID
-	): CatalogoT
-	
-	updateCatalogoT(
-		processDate: ID!
-		hora: String
-		moneda: String
-		precio: String
-		siefore: String
-		valor: String
-		col2: String
-		col3: String
-		col4: String
-		col5: String
-		col6: String
-		col7: String
-		col8: String
-		col9: String
-		cveIva: String
-		tasaIva: String
-		ISR: String
-		indice: String
-		region: String
-		plazo: Int
-		t_bruta: String
-		lim_inf: String
-		lim_sup: String
-		divMet: String
-		denomin: String
-		venta: String
-		cveTc: String
-		compra: String
-		diario: String
-		mensual: String
-		anual: String
-	): CatalogoT
-	
-	saveCatalogoD(
-        processDate: String
-        relCatId: String
-        fullDesc: String
-        shortDesc: String
-        screenDesc: String
-        abbreviation: String
-    ): CatalogoD
-    
-    updateCatalogoD(
-        id: ID!
-        processDate: String
-        relCatId: String
-        fullDesc: String
-        shortDesc: String,
-        screenDesc: String
-        abbreviation: String
-    ): CatalogoD
-    
-    deleteCatalogoD(
-    	id: ID
-    ): CatalogoD
 }

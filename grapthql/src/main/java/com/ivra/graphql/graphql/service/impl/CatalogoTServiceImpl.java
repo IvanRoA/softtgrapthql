@@ -22,7 +22,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ivra.graphql.graphql.exception.NotFoundException;
-import com.ivra.graphql.graphql.model.Banco;
 import com.ivra.graphql.graphql.model.CatalogoT;
 import com.ivra.graphql.graphql.repository.CatalogoTRepository;
 import com.ivra.graphql.graphql.service.CatalogoTService;

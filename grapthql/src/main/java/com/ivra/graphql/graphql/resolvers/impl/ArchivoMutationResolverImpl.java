@@ -6,13 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.ivra.graphql.graphql.model.Archivo;
 import com.ivra.graphql.graphql.resolvers.ArchivoMutationResolver;
 import com.ivra.graphql.graphql.service.ArchivoService;
 
 @Component
-public class ArchivoMutationResolverImpl implements ArchivoMutationResolver, GraphQLMutationResolver {
+public class ArchivoMutationResolverImpl implements ArchivoMutationResolver {
 	
 	@Autowired
 	private ArchivoService archivoService;

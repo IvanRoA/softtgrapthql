@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.ivra.graphql.graphql.model.Banco;
 import com.ivra.graphql.graphql.model.CatalogoT;
 import com.ivra.graphql.graphql.resolvers.CatalogoTQueryResolver;
 import com.ivra.graphql.graphql.service.CatalogoTService;
+
+import graphql.kickstart.tools.GraphQLQueryResolver;
 
 @Component
 public class CatalogoTQueryResolverImpl implements CatalogoTQueryResolver, GraphQLQueryResolver {

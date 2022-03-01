@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.ivra.graphql.graphql.exception.NotFoundException;
-import com.ivra.graphql.graphql.model.Banco;
 import com.ivra.graphql.graphql.model.CatalogoD;
 import com.ivra.graphql.graphql.repository.CatalogoDRepository;
 import com.ivra.graphql.graphql.service.CatalogoDService;
@@ -38,7 +37,7 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 	@Value("${catalogs.separator}")
 	private String CATALOGS_SEPARATOR;
 	
-	Logger logger = LoggerFactory.getLogger(BancoServiceImpl.class);
+	Logger logger = LoggerFactory.getLogger(CatalogoDServiceImpl.class);
 
 	@Override
 	public CatalogoD findById(Long id) {
@@ -103,8 +102,8 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 			limite = Integer.parseInt(((String[])paramLimit.get().getValue())[0]);
 		}
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Banco> cq = cb.createQuery(Banco.class);
-		Root<Banco> banco = cq.from(Banco.class);
+		CriteriaQuery<CatalogoD> cq = cb.createQuery(CatalogoD.class);
+		Root<CatalogoD> banco = cq.from(CatalogoD.class);
 		List<Predicate> predicates = new ArrayList<>();
 		mapeoParametros.removeIf(mp->
 			mp.getKey().equals(("limit"))
