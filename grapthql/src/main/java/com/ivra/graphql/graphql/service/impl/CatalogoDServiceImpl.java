@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -108,7 +109,23 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 			mp.getKey().equals(("limit"))
 		);
 		mapeoParametros.forEach(mp->{
-			predicates.add(catalogoD.get(mp.getKey()).in((String[])mp.getValue()));
+			List<String> values = Arrays.stream(((String[])mp.getValue())).collect(Collectors.toList());
+			List<String> valuesLike = values.stream().filter(v->v.startsWith("%") || v.endsWith("%")).collect(Collectors.toList());
+			values.removeAll(valuesLike);
+			if(!values.isEmpty()){
+				predicates.add(catalogoD.get(mp.getKey()).in(values));
+			}
+			if(!valuesLike.isEmpty()){
+				List<Predicate> predicatesLike = new ArrayList<>();
+				valuesLike.forEach(vl->{
+					if(!vl.replace("%","").trim().isEmpty()) {
+						predicatesLike.add(cb.like(catalogoD.get(mp.getKey()), vl));
+					}
+				});
+				if(!predicatesLike.isEmpty()) {
+					predicates.add(cb.or(predicatesLike.toArray(new Predicate[0])));
+				}
+			}
 		});
 		cq.where(predicates.toArray(new Predicate[0]));
 		Query q = em.createQuery(cq);
