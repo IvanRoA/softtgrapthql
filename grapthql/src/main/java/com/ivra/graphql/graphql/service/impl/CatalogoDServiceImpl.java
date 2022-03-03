@@ -20,11 +20,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import com.ivra.graphql.graphql.exception.NotFoundException;
 import com.ivra.graphql.graphql.model.CatalogoD;
 import com.ivra.graphql.graphql.repository.CatalogoDRepository;
 import com.ivra.graphql.graphql.service.CatalogoDService;
+
+import graphql.GraphQLException;
 
 @Service
 public class CatalogoDServiceImpl implements CatalogoDService{
@@ -47,7 +47,7 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 		if(cuentaOptional.isPresent()) {
 			return cuentaOptional.get();
 		}
-		throw new NotFoundException("No existe la cuenta", "Cuenta");
+		throw new GraphQLException("No existe resultado con el id "+id+" en el catalogoD");
 	}
 
 	@Override
@@ -134,7 +134,6 @@ public class CatalogoDServiceImpl implements CatalogoDService{
 			q.setMaxResults(limite);
 		}
 
-		//logger.info("Parametros: {}", Arrays.toString(mapeoParametros.toArray()));
 		return q.getResultList();
 	}
 

@@ -50,6 +50,7 @@ public class LeerArchivoServiceImpl implements LeerArchivoService {
 			copiarArchivo(path);
 		} catch (IOException e){
 			e.printStackTrace();
+			throw new RuntimeException("No se ha encontrado el archivo");
 		}
 		return "true";
 	}
@@ -61,6 +62,7 @@ public class LeerArchivoServiceImpl implements LeerArchivoService {
             Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
         	e.printStackTrace();
+        	throw new RuntimeException("No se ha podido crear el archivo");
         }
 	}
 }

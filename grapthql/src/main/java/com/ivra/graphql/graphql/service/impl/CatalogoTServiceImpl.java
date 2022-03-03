@@ -21,10 +21,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.ivra.graphql.graphql.exception.NotFoundException;
 import com.ivra.graphql.graphql.model.CatalogoT;
 import com.ivra.graphql.graphql.repository.CatalogoTRepository;
 import com.ivra.graphql.graphql.service.CatalogoTService;
+
+import graphql.GraphQLException;
 
 @Service
 public class CatalogoTServiceImpl implements CatalogoTService {
@@ -46,7 +47,7 @@ public class CatalogoTServiceImpl implements CatalogoTService {
 		if(catalogoT.isPresent()) {
 			return catalogoT.get();
 		}
-		throw new NotFoundException("No existe el catalogoT", "CatalogoT");
+		throw new GraphQLException("No existe resultado con el id "+processDate+" en el catalogoT");
 	}
 	
 	@Override
@@ -142,7 +143,6 @@ public class CatalogoTServiceImpl implements CatalogoTService {
 			q.setMaxResults(limite);
 		}
 
-		//logger.info("Parametros: {}", Arrays.toString(mapeoParametros.toArray()));
 		return q.getResultList();
 	}
 }

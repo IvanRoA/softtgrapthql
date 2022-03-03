@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.ivra.graphql.graphql.exception.NotFoundException;
 import com.ivra.graphql.graphql.model.Archivo;
 import com.ivra.graphql.graphql.repository.ArchivoRepository;
 import com.ivra.graphql.graphql.service.ArchivoService;
 import com.ivra.graphql.graphql.service.LeerArchivoService;
+
+import graphql.GraphQLException;
 
 @Service
 public class ArchivoServiceImpl implements ArchivoService {
@@ -34,7 +35,7 @@ public class ArchivoServiceImpl implements ArchivoService {
 		if(archivo.isPresent()) {
 			return archivo.get();
 		}
-		throw new NotFoundException("No existe el archivo", "Archivo");  
+		throw new GraphQLException("No existe resultado con el id "+id+" en Archivo");  
 	}
 	
 	@Override
